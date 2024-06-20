@@ -47,7 +47,7 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - '3000:3000'
+      - '10002:10002'
     environment:
        - ENVIRONMENT=production
   
@@ -71,7 +71,7 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     ports:
-      - '5000:5000'
+      - '10000:10000'
     environment:
        - ENVIRONMENT=production
 
@@ -103,7 +103,7 @@ services:
       target: development
     command: npm run start:dev auth
     ports:
-      - '4000:4000'
+      - '10001:10001'
     env_file:
       - ./apps/auth/.env
     depends_on:
@@ -118,8 +118,6 @@ services:
  
 
 
-
-
   mongodb-primary:
     image: docker.io/bitnami/mongodb:5.0
     environment:
@@ -130,7 +128,7 @@ services:
     volumes:
       - 'mongodb_master_data:/bitnami/mongodb'
     ports:
-      - '27018:27018'
+      - '27018:27017'
 
   mongodb-secondary:
     image: docker.io/bitnami/mongodb:5.0
